@@ -33,17 +33,10 @@ builder.Services.AddAuthentication()
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders =
-        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
+        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
 });
 
 var app = builder.Build();
-
-app.UseForwardedHeaders();
-app.Use((context, next) =>
-{
-    context.Request.Scheme = "https";
-    return next(context);
-});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -56,6 +49,9 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
+app.UseForwardedHeaders();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
