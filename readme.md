@@ -12,5 +12,6 @@ Simple example showing the use of auth in ASP.NET Core using Google login from b
     - Repeat the same for the client secret with `dotnet user-secrets set "Authentication:Google:ClientSecret" "[your-client-secret]"`
 - Run with `dotnet run`.
 - Setup your reverse proxy to port 5001, forwarding http to 5054, forwarding `X-Forwarded-For` and `X-Forwarded-Proto` headers.
-- Navigate to `http://localhost:5001` and sign in to your account. 
+  - All this can be achieved using [Caddy](https://caddyserver.com/) and running `caddy reverse-proxy --from localhost:5001 --to :5056`.
+- Navigate to `https://localhost:5001` and sign in to your account. 
 

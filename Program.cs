@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 using GoogleAuth.Data;
 
 var builder = WebApplication.CreateBuilder(args);
